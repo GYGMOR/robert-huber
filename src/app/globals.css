@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-surface: #111111;
+  --color-surface-hover: #161616;
+  --color-surface-light: #1a1a1a;
+  --color-border: rgba(255, 255, 255, 0.05);
+  --color-accent: #c9a34e; /* Refined elegant gold */
+  --color-accent-hover: #d2b063;
+  --color-muted: #808080;
+  --color-glass: rgba(15, 15, 15, 0.4);
+  --color-glass-border: rgba(255, 255, 255, 0.05);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade-in: fade-in 1s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-up: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: linear-gradient(to bottom, #0a0a0a, #111111, #151515);
+    background-color: var(--color-background);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background-color: var(--color-accent);
+    color: #000;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-glass backdrop-blur-2xl border border-glass-border shadow-[0_8px_32px_rgba(0,0,0,0.6)];
+  }
+  .glass-card {
+    @apply bg-surface/60 backdrop-blur-xl border border-white/5 transition-all duration-500 hover:border-white/10 hover:shadow-[0_0_30px_rgba(201,163,78,0.1)] hover:bg-surface-hover;
+  }
+  .glow-text {
+    text-shadow: 0 0 20px rgba(255,255,255,0.4);
+  }
+  .accent-glow {
+    filter: drop-shadow(0 0 20px rgba(201,163,78,0.4));
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
